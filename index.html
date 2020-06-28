@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html>
 <style>
-    #mydiv {
+    .mydiv {
         position: absolute;
         z-index: 9;
         background-color: #f1f1f1;
         text-align: center;
         border: 1px solid #d3d3d3;
     }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 5%;
+        padding: 5px;
+    }
 </style>
+<html>
 <body>
 
     <h1>ViewerV3</h1>
     <h2>Draggable DIV Element</h2>
 
-    <div id="mydiv">
-        <img src="S115_C413_01.jpg" alt="img1" width="500" height="600">
+    <div class="row">
+        <div class="column">
+            <div class="mydiv" id="mydiv1">
+                <img src="S115_C413_01.jpg" alt="img1" width="500" height="600">
+            </div>
+        </div>
+        <div class="column">
+            <div class="mydiv" id="mydiv2">
+                <img src="S115_C413_02.jpg" alt="img2" width="500" height="600">
+            </div>
+        </div>
     </div>
-
     <script>
         //Make the DIV element draggagle:
-        dragElement(document.getElementById("mydiv"));
+        dragElement(document.getElementById("mydiv1"));
+        dragElement(document.getElementById("mydiv2"));
 
         function dragElement(elmnt) {
             var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

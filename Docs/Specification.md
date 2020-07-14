@@ -11,3 +11,5 @@ Minden architektúrális döntés, implementációs részlet ezen alapelveket ke
 - Egyszerű kezelés
 - Könnyű bővíthetőség
 
+## Architektúra
+[Architektúra](https://SquareRoundCurly.github.com/images/yaktocat.png)

@@ -12,4 +12,4 @@ Minden architektúrális döntés, implementációs részlet ezen alapelveket ke
 - Könnyű bővíthetőség
 
 ## Architektúra
-[Architektúra](/Docs/Images/ViewerArchitecture.png)
+![Architektúra](/Docs/Images/ViewerArchitecture.png)

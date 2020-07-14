@@ -12,4 +12,4 @@ Minden architektúrális döntés, implementációs részlet ezen alapelveket ke
 - Könnyű bővíthetőség
 
 ## Architektúra
-[Architektúra](https://github.com/SquareRoundCurly/ViewerV3/Images/ViewerArchitecture.png)
+[Architektúra](/Docs/Images/ViewerArchitecture.png)

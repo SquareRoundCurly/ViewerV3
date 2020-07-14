@@ -67,7 +67,8 @@
 
 ## Week 8 - Integrálás, Deployment & kód tisztítás, dokumentáció fenntartása
 - [ ] Modul : web API modul írása, web API interfész deklarárlása
-- [ ] Demo : Demo AHK script írása, ami bemutatja az új web API működését
+- [ ] Demo & Integration : Demo AHK script írása, ami bemutatja az új web API működését
+- [ ] Demo & Integration : Telepített programok megnyitása böngészőből
 - [ ] Maintenace : Bugfixes
 - [ ] Maintenace : kód fenntartása
 - [ ] Docs : dokumentáció generáló kommentek frissítése, kiegészítése

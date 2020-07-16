@@ -1,14 +1,14 @@
 # 8 Week plan
 
 ## Week 1 - Infrastruktúra lefektetése
-- [ ] Maintenance : Git repository felállítása
-- [ ] Docs : Specifikáció megírása, eszközök kiválasztása
-- [ ] Döntés : Web framework kiválasztása (c++ & web framework lib / Node.js & c++ addons)
+- [x] Maintenance : Git repository felállítása
+- [x] Docs : Specifikáció megírása, eszközök kiválasztása
+- [x] Döntés : Web framework kiválasztása (c++ & web framework lib / Node.js & c++ addons)
 - [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
 - [ ] Init : Repository kitisztítása (előző prototípus eltávolítása)
-- [ ] Döntés : Build system kiválasztása
+- [x] Döntés : Build system kiválasztása
 - [ ] Init : Eszközök, tech stack integrálása megfelelő fejlesztői környezetben
-- [ ] Demo : Egyszerű web server építése, egyszerű weblap építése
+- [x] Demo : Egyszerű web server építése, egyszerű weblap építése
 - [ ] Init : Teszt képek lokális gyűjteménye / file server connection
 
 

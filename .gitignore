@@ -1,6 +1,6 @@
-﻿
-## Visual Studio 
-# Root .vs dir
-/.vs
-# ViewerV3 project .vs dir
+﻿## ViewerV3 project
+# Visual Studio files
 /Source/ViewerV3/.vs
+# Project build output
+/Source/ViewerV3/bin
+/Source/ViewerV3/obj

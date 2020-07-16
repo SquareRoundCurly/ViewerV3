@@ -13,3 +13,4 @@ Két bonyolult problémát kell megoldani a webes felületen :
   2. a layout egyedisége
   A layout nem egy egyszerű táblázat benne képekkel. Mivel minden sorban akárhány kép lehet, más logikára van szükség. A talán leg népszerűbb HTML/CSS/JS könyvtár segítségével (Bootstrap 4) sikerült ezt is megoldani egy demó formájában.
 - Most, hogy tudom, hogy a kiválasztott eszközökkel megvalósítható a program, a hét maradék 3 napja ezek a demók integrálásáról fog szólni. A cél, hogy a hét végére bemutatható weblap fusson a böngészőben.
+- Esti checkout : tisztított repository, működő Node.JS server, ExpressJS - modullal képeket szolgálok ki egy működő demóban. Amit kell még csinálni a héten: adatbázis választása & integrálása.

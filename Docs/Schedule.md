@@ -5,7 +5,7 @@
 - [x] Docs : Specifikáció megírása, eszközök kiválasztása
 - [x] Döntés : Web framework kiválasztása (c++ & web framework lib / Node.js & c++ addons)
 - [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
-- [ ] Init : Repository kitisztítása (előző prototípus eltávolítása)
+- [x] Init : Repository kitisztítása (előző prototípus eltávolítása)
 - [x] Döntés : Build system kiválasztása
 - [ ] Init : Eszközök, tech stack integrálása megfelelő fejlesztői környezetben
 - [x] Demo : Egyszerű web server építése, egyszerű weblap építése

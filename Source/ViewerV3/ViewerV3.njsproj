@@ -29,7 +29,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="HTML\Index.html">
+    <Content Include="HTML\index.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="server.js" />
@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HTML\" />
+    <Folder Include="public\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

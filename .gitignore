@@ -4,3 +4,7 @@
 # Project build output
 /Source/ViewerV3/bin
 /Source/ViewerV3/obj
+# Build modules
+/Source/ViewerV3/node_modules
+# Package lock
+/Source/ViewerV3/package-lock.json

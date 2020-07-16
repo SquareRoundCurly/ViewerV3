@@ -1,0 +1,9 @@
+{
+  "name": "viewer-v3",
+  "version": "0.0.0",
+  "description": "ViewerV3",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}

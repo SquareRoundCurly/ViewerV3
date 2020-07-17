@@ -9,7 +9,8 @@
 - [x] Döntés : Build system kiválasztása
 - [ ] Init : Eszközök, tech stack integrálása megfelelő fejlesztői környezetben
 - [x] Demo : Egyszerű web server építése, egyszerű weblap építése
-- [ ] Init : Teszt képek lokális gyűjteménye / file server connection
+- [x] Init : Teszt képek lokális gyűjteménye / file server connection
+- [x] Demo : Képek betöltése szerver oldalról
 
 
 ## Week 2 - Fotók beolvasása, keresés web felületen

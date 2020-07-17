@@ -4,11 +4,20 @@ const port = 1337;
 
 // Built-in modules
 var path = require('path');
-var express = require('express');
 var fs = require('fs');
 
-// Init ExpressJS
-var app = express();
+// Vendor modules
+var express = require('express');
+const chokidar = require('chokidar');
+
+// Initialization
+var app = express();                            // Init ExpressJS
+var server = require('http').createServer(app);   // Init HTTP server
+var io = require('socket.io')(server);            // Create socket.io
+
+// File system watcher
+const watcher = chokidar.watch('../../Images', { persistent: true });   // Initialize watcher
+watcher.on('add', path => console.log(`File ${path} has been added`));  // Add event listeners
 
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');
@@ -60,7 +69,18 @@ app.get('*', function (req, res)
     });
 });
 
-app.listen(port, function ()
+// Connection event (and disconnect)
+io.on('connection', (socket) =>
+{
+    console.log('a user connected');
+    socket.on('disconnect', () =>
+    {
+        console.log('user disconnected');
+    });
+});
+
+// Server start listening event
+server.listen(port, function ()
 {
     console.log('Listening on http://localhost:' + port + '/');
 });

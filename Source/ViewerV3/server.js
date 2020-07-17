@@ -17,7 +17,15 @@ var io = require('socket.io')(server);            // Create socket.io
 
 // File system watcher
 const watcher = chokidar.watch('../../Images', { persistent: true });   // Initialize watcher
-watcher.on('add', path => console.log(`File ${path} has been added`));  // Add event listeners
+watcher.on('add', path =>                                               // Add event listeners
+{
+    console.log(`File ${path} has been added`);
+    fs.readFile(path, function (err, buf)
+    {
+        console.log(buf.length);
+        io.emit('image', "data:image/jpg;base64," + buf.toString("base64"));
+    });
+});  
 
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');
@@ -73,6 +81,14 @@ app.get('*', function (req, res)
 io.on('connection', (socket) =>
 {
     console.log('a user connected');
+
+    fs.readFile('../../Images/S115_C413_02.jpg', function (err, data)
+    {
+        console.log('emitting S115_C413_02.jpg');
+        console.log(data.length);
+        socket.emit('image', "data:image/jpg;base64," + data.toString("base64"));
+    });
+
     socket.on('disconnect', () =>
     {
         console.log('user disconnected');

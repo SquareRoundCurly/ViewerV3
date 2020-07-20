@@ -10,7 +10,8 @@
 - [x] Demo : Egyszerű web server építése, egyszerű weblap építése
 - [x] Init : Teszt képek lokális gyűjteménye / file server connection
 - [x] Demo : Képek betöltése szerver oldalról
-
+- [x] Demo : képek dinamikus betöltése
+- [x] Demo : server - client & client - server kommunikació socket technológiával
 
 ## Week 2 - Fotók beolvasása, keresés web felületen
 - [ ] Weblap : Bootstrap navbar

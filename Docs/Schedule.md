@@ -4,16 +4,18 @@
 - [x] Maintenance : Git repository felállítása
 - [x] Docs : Specifikáció megírása, eszközök kiválasztása
 - [x] Döntés : Web framework kiválasztása (c++ & web framework lib / Node.js & c++ addons)
-- [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
 - [x] Init : Repository kitisztítása (előző prototípus eltávolítása)
 - [x] Döntés : Build system kiválasztása
-- [ ] Init : Eszközök, tech stack integrálása megfelelő fejlesztői környezetben
+- [x] Init : Eszközök, tech stack integrálása megfelelő fejlesztői környezetben
 - [x] Demo : Egyszerű web server építése, egyszerű weblap építése
 - [x] Init : Teszt képek lokális gyűjteménye / file server connection
 - [x] Demo : Képek betöltése szerver oldalról
-
+- [x] Demo : képek dinamikus betöltése
+- [x] Demo : server - client & client - server kommunikació socket technológiával
 
 ## Week 2 - Fotók beolvasása, keresés web felületen
+- [ ] Weblap : Bootstrap navbar
+- [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
 - [ ] Döntés : Dokumentáció generáló eszköz kiválasztása
 - [ ] Demo : Demo modul és kernel építése
 - [ ] Init : Teszt framework kiválasztása, teszt környezet kifejlesztése

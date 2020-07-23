@@ -30,16 +30,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="package.json" />
-    <Content Include="public\index.html">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="README.md" />
     <Content Include="server.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\pages\home.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\pages\test.ejs" />
+    <Content Include="views\pages\search.ejs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\template\footer.ejs" />
+    <Content Include="views\template\head.ejs" />
+    <Content Include="views\template\nav.ejs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
+    <Folder Include="views\" />
+    <Folder Include="views\pages\" />
+    <Folder Include="views\template\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

@@ -15,6 +15,11 @@ var app = express();                            // Init ExpressJS
 var server = require('http').createServer(app); // Init HTTP server
 var io = require('socket.io')(server);          // Create socket.io
 
+// View engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// Client JS library setup
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 
@@ -46,12 +51,21 @@ var mime =
     js: 'application/javascript'
 };
 
+app.get('/', function (req, res) {
+    res.render('pages/home')
+});
+
+app.get('/search', function (req, res) {
+    res.render('pages/search')
+});
+
 // Event GET
 app.get('*', function (req, res)
 {
     // Get file from request
     var file = path.join(dir, req.path.replace(/\/$/, '/index.html'));
     console.log(file);
+
     // Check if file path is correct
     if (file.indexOf(dir + path.sep) !== 0)
     {

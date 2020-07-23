@@ -1,10 +1,18 @@
 body {
     text-align: center;
     font-family: sans-serif;
+    padding-top: 65px;
+    background-color: dimgray;
 }
 img.twitter {
     border-radius: 50%;
 }
 p.style {
     opacity: 1 !important;
+}
+
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 50%;
+    height: 50%;
 }

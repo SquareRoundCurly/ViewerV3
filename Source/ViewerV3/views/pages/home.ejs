@@ -1,0 +1,51 @@
+<%- include('../template/head')-%>
+    <body class="text-center">
+        <%- include('../template/nav')-%>
+
+        <h1 style="color:whitesmoke; font-size:80px;"> ViewerV3 </h1>
+
+        <div id="demo" class="carousel slide" data-ride="carousel" data-interval="3500" data-pause=false>
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="1.jpg" alt="1.jpg">
+                    <div class="carousel-caption">
+                        <h3 style="font-size:50px; text-shadow: 2px 2px 0px #000000;">Precise.</h3>
+                        <p style="text-shadow: 2px 2px 0px #000000;">No square micrometer uncovered</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="2.jpg" alt="2.jpg">
+                    <div class="carousel-caption">
+                        <h3 style="font-size:50px; text-shadow: 2px 2px 0px #000000;">Diligent.</h3>
+                        <p style="text-shadow: 2px 2px 0px #000000;">All data recorded, stored & analysed</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="3.jpg" alt="3.jpg">
+                    <div class="carousel-caption">
+                        <h3 style="font-size:50px; text-shadow: 2px 2px 0px #000000;">Smart.</h3>
+                        <p style="text-shadow: 2px 2px 0px #000000;">Discovering the problem at hand</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+        <%- include('../template/footer')-%>
+    </body>
+</html>

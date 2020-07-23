@@ -9,14 +9,14 @@ var fs = require('fs');
 // Vendor modules
 var express = require('express');       // Public directory
 const chokidar = require('chokidar');   // FS watcher
-//require('bootstrap');                 // Load bootstrap (bootstrap doesn't export any functions, this is needed for client side scripts)
 
 // Initialization
 var app = express();                            // Init ExpressJS
 var server = require('http').createServer(app); // Init HTTP server
 var io = require('socket.io')(server);          // Create socket.io
 
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 
 // File system watcher
 const watcher = chokidar.watch('../../Images', { persistent: true });   // Initialize watcher

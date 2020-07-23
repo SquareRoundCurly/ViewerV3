@@ -14,7 +14,7 @@
 - [x] Demo : server - client & client - server kommunikació socket technológiával
 
 ## Week 2 - Fotók beolvasása, keresés web felületen
-- [ ] Weblap : Bootstrap navbar
+- [x] Weblap : Bootstrap navbar
 - [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
 - [ ] Döntés : Dokumentáció generáló eszköz kiválasztása
 - [ ] Demo : Demo modul és kernel építése
@@ -24,7 +24,7 @@
 - [ ] Weblap & server & DB : fotók kereső felület weblapon
 - [ ] Test : Teszt írása a képbeolvasó modul - hoz
 - [ ] Test : Weblap teszt
-
+- [ ] Weblap : cloudflare fallback system https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
 
 ## Week 3 - Layouts, webes rendezés
 - [ ] DB : Layout tárolása adatbázisban

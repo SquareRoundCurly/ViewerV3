@@ -7,8 +7,9 @@ var path = require('path');
 var fs = require('fs');
 
 // Vendor modules
-var express = require('express');       // Public directory
-const chokidar = require('chokidar');   // FS watcher
+var express = require('express');               // Public directory
+const chokidar = require('chokidar');           // FS watcher
+const sqlite3 = require('sqlite3').verbose();   // DB
 
 // Initialization
 var app = express();                            // Init ExpressJS
@@ -23,20 +24,51 @@ app.set('view engine', 'ejs');
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 
+// Get static resource dir 'public'
+var dir = path.join(__dirname, 'public');
+
+// Database
+let db = new sqlite3.Database('./database/test.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Connected to SQlite database.');
+});
+
+// Create image table
+db.run
+(`CREATE TABLE IF NOT EXISTS images
+    (
+	    id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL UNIQUE,
+        path TEXT NOT NULL UNIQUE
+    );`
+);
+
+fs.readdir('../../Images', function (err, files) {
+    //handling error
+    if (err) {
+        return console.log('Unable to scan directory: ' + err);
+    }
+    //listing all files
+    files.forEach(function (file) {
+        var name = file.split('.')[0];
+        var filePath = path.join('../../Images', file);
+        var command = 'INSERT INTO images (name,path) VALUES (\'' + name + '\', \'' + filePath + '\');';
+        console.log(command);
+        db.run(command, function (err) { if (err !== null) console.log(err); });
+    });
+});
+
 // File system watcher
 const watcher = chokidar.watch('../../Images', { persistent: true });   // Initialize watcher
 watcher.on('add', path =>                                               // Add event listeners
 {
     console.log(`File ${path} has been added`);
-    fs.readFile(path, function (err, buf)
-    {
-        console.log(buf.length);
+    fs.readFile(path, function (err, buf) {
         io.emit('image', "data:image/jpg;base64," + buf.toString("base64"));
     });
 });  
-
-// Get static resource dir 'public'
-var dir = path.join(__dirname, 'public');
 
 // Create mime dictionary for basic resource types
 var mime =
@@ -102,7 +134,6 @@ io.on('connection', (socket) =>
     fs.readFile('../../Images/S115_C413_02.jpg', function (err, data)
     {
         console.log('emitting S115_C413_02.jpg');
-        console.log(data.length);
         socket.emit('image', "data:image/jpg;base64," + data.toString("base64"));
     });
 
@@ -117,3 +148,12 @@ server.listen(port, function ()
 {
     console.log('Listening on http://localhost:' + port + '/');
 });
+
+
+// Close the database connection
+//db.close((err) => {
+//    if (err) {
+//        return console.error(err.message);
+//    }
+//    console.log('Close the database connection.');
+//});

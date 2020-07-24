@@ -8,3 +8,4 @@
 /Source/ViewerV3/node_modules
 # Package lock
 /Source/ViewerV3/package-lock.json
+/Source/ViewerV3/database/test.db

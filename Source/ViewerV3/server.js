@@ -137,6 +137,11 @@ io.on('connection', (socket) =>
         socket.emit('image', "data:image/jpg;base64," + data.toString("base64"));
     });
 
+    socket.on('SearchBtn', function (data) {
+        console.log("Serial : " + data.serial);
+        console.log("Type : " + data.type);
+    });
+
     socket.on('disconnect', () =>
     {
         console.log('user disconnected');

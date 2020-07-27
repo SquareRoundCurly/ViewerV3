@@ -5,12 +5,12 @@
         <div class="container">
             <h2>Search</h2>
             <p>Search images based on serial ID or type ID</p>
-            <form class="form-inline" action="/action_page.php">
+            <form class="form-inline" id="searchForm">
                 <label for="serial" class="mb-2 mr-sm-2">Serial:</label>
                 <input type="text" class="form-control mb-2 mr-sm-2" id="serial" placeholder="Enter serial" name="srl">
                 <label for="type" class="mb-2 mr-sm-2">Type:</label>
                 <input type="text" class="form-control mb-2 mr-sm-2" id="type" placeholder="Enter type" name="typ">
-                <button type="submit" class="btn btn-primary mb-2">Search</button>
+                <button type="submit" class="btn btn-primary mb-2" id="SearchBtn">Search</button>
             </form>
         </div>
 
@@ -19,4 +19,11 @@
         <h1>HTML Example</h1>
         <%- include('../template/footer')-%>
     </body>
+    <script>
+        $(document).on("click", "#SearchBtn", function (event) {
+            var socket = io();
+
+            socket.emit("SearchBtn", { serial: document.getElementById("serial").value, type: document.getElementById("type").value });
+        });
+    </script>
 </html>

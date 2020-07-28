@@ -27,6 +27,8 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); /
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');
 
+var result = [];
+
 // Database
 let db = new sqlite3.Database('./database/test.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
@@ -84,11 +86,11 @@ var mime =
 };
 
 app.get('/', function (req, res) {
-    res.render('pages/home')
+    res.render('pages/home');
 });
 
 app.get('/search', function (req, res) {
-    res.render('pages/search')
+    res.render('pages/search');
 });
 
 // Event GET
@@ -138,15 +140,48 @@ io.on('connection', (socket) =>
     });
 
     socket.on('SearchBtn', function (data) {
-        console.log("Serial : " + data.serial);
-        console.log("Type : " + data.type);
+        Search(data.serial, data.type);
+        console.log("emitting array of size : " + result.length);
     });
+
+    socket.emit('searchResult', { results: result });
 
     socket.on('disconnect', () =>
     {
         console.log('user disconnected');
     });
 });
+
+function Search(serial, type) {
+    console.log("Search action");
+
+    // Clear results array
+    result = [];
+
+    // Log search parameters
+    console.log("Serial : " + serial);
+    console.log("Type : " + type);
+
+    // Construct command
+    console.log("Constructed query");
+    var command = 'SELECT name, path FROM images WHERE name LIKE \'' + serial + '%\';';
+    console.log(command);
+
+    // Get results from SELECT
+    db.all(command, [], (err, rows) => {
+
+        if (err !== null) {
+            console.log(err);
+        }
+
+        console.log("Found " + rows.length + " results");
+        rows.forEach((row) => {
+            console.log("name : " + row.name + "\t" + "path : " + row.path);
+            console.log("Sending : " + JSON.stringify(row));
+            result.push(JSON.stringify(row));
+        });
+    });
+}
 
 // Server start listening event
 server.listen(port, function ()

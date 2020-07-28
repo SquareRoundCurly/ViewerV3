@@ -15,8 +15,26 @@
         </div>
 
         <h1>HTML Example</h1>
-        <h1>HTML Example</h1>
-        <h1>HTML Example</h1>
+        <div class="container">
+            <table id="myTable" class="table order-list">
+                <thead>
+                    <tr>
+                        <td>Image</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-sm-4">
+                            <img class="photo" src="S115_C413_01.jpg" width="300">
+                        </td>
+                        <td class="col-sm-4">
+                            <h7> Name </h7>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <%- include('../template/footer')-%>
     </body>
     <script>
@@ -24,6 +42,31 @@
             var socket = io();
 
             socket.emit("SearchBtn", { serial: document.getElementById("serial").value, type: document.getElementById("type").value });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var socket = io();
+
+            var counter = 0;
+
+            socket.on("searchResult", (msg) => {
+                console.log(msg.results.length + " results recieved");
+                msg.results.forEach((result) => {
+                    var image = JSON.parse(result);
+                    console.log(image.name + ".jpg");
+
+                    var newRow = $("<tr>");
+                    var cols = "";
+
+                    cols += '<td><img class="photo" src="S115_C413_01.jpg" width="300" name="Image' + counter + '"/></td>';
+                    cols += '<td><h7 Name' + counter + '"/></td>';
+
+                    newRow.append(cols);
+                    $("table.order-list").append(newRow);
+                    counter++;
+                });
+            });
         });
     </script>
 </html>

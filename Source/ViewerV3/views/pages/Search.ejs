@@ -14,7 +14,6 @@
             </form>
         </div>
 
-        <h1>HTML Example</h1>
         <div class="container">
             <table id="myTable" class="table order-list">
                 <thead>
@@ -26,10 +25,8 @@
                 <tbody>
                     <tr>
                         <td class="col-sm-4">
-                            <img class="photo" src="S115_C413_01.jpg" width="300">
                         </td>
                         <td class="col-sm-4">
-                            <h7> Name </h7>
                         </td>
                     </tr>
                 </tbody>
@@ -55,12 +52,13 @@
                 msg.results.forEach((result) => {
                     var image = JSON.parse(result);
                     console.log(image.name + ".jpg");
+                    console.log(result);
 
                     var newRow = $("<tr>");
                     var cols = "";
 
-                    cols += '<td><img class="photo" src="S115_C413_01.jpg" width="300" name="Image' + counter + '"/></td>';
-                    cols += '<td><h7 Name' + counter + '"/></td>';
+                    cols += '<td><img class="photo" src="' + image.data + '" width="300" name="Image' + counter + '"/></td>';
+                    cols += '<td><h7>' + image.name + '"</h7></td>';
 
                     newRow.append(cols);
                     $("table.order-list").append(newRow);

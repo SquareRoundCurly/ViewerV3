@@ -178,7 +178,13 @@ function Search(serial, type) {
         rows.forEach((row) => {
             console.log("name : " + row.name + "\t" + "path : " + row.path);
             console.log("Sending : " + JSON.stringify(row));
-            result.push(JSON.stringify(row));
+            
+            fs.readFile(row.path, function (err, buf) {
+                row.data = "data:image/jpg;base64," + buf.toString("base64");
+                result.push(JSON.stringify(row));
+            });
+
+            
         });
     });
 }

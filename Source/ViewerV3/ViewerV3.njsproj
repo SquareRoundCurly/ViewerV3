@@ -37,6 +37,9 @@
     <Content Include="views\pages\home.ejs">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="views\pages\layout.ejs">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\pages\test.ejs" />
     <Content Include="views\pages\search.ejs">
       <SubType>Code</SubType>

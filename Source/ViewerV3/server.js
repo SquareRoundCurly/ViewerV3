@@ -94,6 +94,10 @@ app.get('/search', function (req, res) {
     res.render('pages/search');
 });
 
+app.get('/layout', function (req, res) {
+    res.render('pages/layout');
+});
+
 // Event GET
 app.get('*', function (req, res)
 {

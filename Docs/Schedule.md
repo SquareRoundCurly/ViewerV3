@@ -15,20 +15,26 @@
 
 ## Week 2 - Fotók beolvasása, keresés web felületen
 - [x] Weblap : Bootstrap navbar
-- [ ] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
+- [x] Döntés : Adatbázis kiválasztása & összekötése a web framework - el
+- [x] DB : Beolvassa a fotók meta adatit a fájlnév, direktory alapján; adatbázisban helyezi el az adatot
+- [x] Weblap & server & DB : fotók kereső felület weblapon
+- [x] Weblap : dinamikus foto toltes
+- [x] Weblap : landing page animacioval
+- [x] Weblap & server : ket iranyu dinamikus adat kozles
+- [x] Weblap & server : oldalak közötti navigáció
+
+## Week 3 - Layouts, webes rendezés
 - [ ] Döntés : Dokumentáció generáló eszköz kiválasztása
 - [ ] Demo : Demo modul és kernel építése
 - [ ] Init : Teszt framework kiválasztása, teszt környezet kifejlesztése
 - [ ] Docs : Build & Use instrukciók leírása, dokumentálás
-- [ ] Modul & DB : Fotó olvasó modul, beolvassa a fotók meta adatit a fájlnév, direktory alapján; adatbázisban helyezi el az adatot
-- [ ] Weblap & server & DB : fotók kereső felület weblapon
 - [ ] Test : Teszt írása a képbeolvasó modul - hoz
 - [ ] Test : Weblap teszt
 - [ ] Weblap : cloudflare fallback system https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
 
-## Week 3 - Layouts, webes rendezés
+- [ ] Weblap : draggable layout
+- [ ] Weblap : draggable layout fotokkal
 - [ ] DB : Layout tárolása adatbázisban
-- [ ] Weblap & server : Layout oldal, oldalak közötti navigáció
 - [ ] Weblap & server & DB : layout szerkesztése webes felületen
 - [ ] Test : Layout test
 - [ ] Test : Layout weblap teszt

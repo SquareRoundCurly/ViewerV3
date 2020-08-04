@@ -48,22 +48,21 @@
             var counter = 0;
 
             socket.on("searchResult", (msg) => {
-                console.log(msg.results.length + " results recieved");
-                msg.results.forEach((result) => {
-                    var image = JSON.parse(result);
-                    console.log(image.name + ".jpg");
-                    console.log(result);
+                var image = JSON.parse(msg.result);
+                console.log(image.name + ".jpg");
 
-                    var newRow = $("<tr>");
-                    var cols = "";
+                var newRow = $("<tr>");
+                var cols = "";
 
-                    cols += '<td><img class="photo" src="' + image.data + '" width="300" name="Image' + counter + '"/></td>';
-                    cols += '<td><h7>' + image.name + '</h7></td>';
+                cols += '<td><img class="photo" src="' + image.data + '" width="300" name="Image' + counter + '"/></td>';
+                cols += '<td><h7>' + image.name + '</h7></td>';
 
-                    newRow.append(cols);
-                    $("table.order-list").append(newRow);
-                    counter++;
-                });
+                newRow.append(cols);
+                $("table.order-list").append(newRow);
+
+                counter++;
+
+                socket.emit("searchDigested");
             });
         });
     </script>

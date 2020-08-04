@@ -27,6 +27,7 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); /
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');
 
+var resultIterator = 0;
 var result = [];
 
 // Database
@@ -144,7 +145,17 @@ io.on('connection', (socket) =>
         console.log("emitting array of size : " + result.length);
     });
 
-    socket.emit('searchResult', { results: result });
+    if (result.length > 0) {
+        socket.emit('searchResult', { result: result[0] });
+        resultIterator += 1;
+    }
+
+    socket.on('searchDigested', function () {
+        if (resultIterator < result.length) {
+            socket.emit('searchResult', { result: result[resultIterator] });
+            resultIterator += 1;
+        }
+    });
 
     socket.on('disconnect', () =>
     {
@@ -157,6 +168,7 @@ function Search(serial, type) {
 
     // Clear results array
     result = [];
+    resultIterator = 0;
 
     // Log search parameters
     console.log("Serial : " + serial);

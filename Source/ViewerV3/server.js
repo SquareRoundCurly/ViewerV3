@@ -20,9 +20,12 @@ var io = require('socket.io')(server);          // Create socket.io
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Client JS library setup
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+/// Client JS library setup
+// Bootstrap
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));    // redirect CSS bootstrap
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));      // redirect bootstrap JS
+// Packery
+app.use('/packery', express.static(__dirname + '/node_modules/packery/dist/'));
 
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');

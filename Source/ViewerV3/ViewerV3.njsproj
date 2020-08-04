@@ -30,6 +30,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="package.json" />
+    <Content Include="public\layout.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\layout.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="README.md" />
     <Content Include="server.js">
       <SubType>Code</SubType>

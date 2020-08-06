@@ -31,7 +31,6 @@
 - [ ] Test : Teszt írása a képbeolvasó modul - hoz
 - [ ] Test : Weblap teszt
 - [ ] Weblap : cloudflare fallback system https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
-
 - [ ] Weblap : draggable layout
 - [ ] Weblap : draggable layout fotokkal
 - [ ] Server : de/serialise layout

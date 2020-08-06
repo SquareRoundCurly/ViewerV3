@@ -23,19 +23,35 @@ body {
 /* ---- .grid-item ---- */
 
 .grid-item {
-    float: left;
+    /*float: left;*/
+    display: block;
     width: 100px;
     height: 100px;
     background: #C09;
     border: 2px solid hsla(0, 0%, 0%, 0.5);
 }
 
+    .grid-item img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: contain
+    }
+
 .grid-item--width2 {
     width: 200px;
 }
 
+.grid-item--width3 {
+    width: 300px;
+}
+
 .grid-item--height2 {
     height: 200px;
+}
+
+.grid-item--height3 {
+    height: 300px;
 }
 
 .grid-item:hover {

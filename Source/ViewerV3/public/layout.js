@@ -1,7 +1,8 @@
 window.addEventListener('load', function () {
-    this.console.log("hello");
     var $grid = $('.grid').packery({
         itemSelector: '.grid-item',
+        percentPosition: true,
+        gutter: 0,
         columnWidth: 100
     });
 
@@ -10,5 +11,7 @@ window.addEventListener('load', function () {
         var draggie = new Draggabilly(gridItem);
         // bind drag events to Packery
         $grid.packery('bindDraggabillyEvents', draggie);
+        gridItem.innerHTML = '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />';
+        console.log();
     });
 });

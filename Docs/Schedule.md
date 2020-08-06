@@ -31,9 +31,10 @@
 - [ ] Test : Teszt írása a képbeolvasó modul - hoz
 - [ ] Test : Weblap teszt
 - [ ] Weblap : cloudflare fallback system https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
-
-- [ ] Weblap : draggable layout
+- [x] Weblap : draggable layout
+- [x] Weblap : n size elements
 - [ ] Weblap : draggable layout fotokkal
+- [ ] Server : de/serialise layout
 - [ ] DB : Layout tárolása adatbázisban
 - [ ] Weblap & server & DB : layout szerkesztése webes felületen
 - [ ] Test : Layout test

@@ -34,6 +34,7 @@
 
 - [ ] Weblap : draggable layout
 - [ ] Weblap : draggable layout fotokkal
+- [ ] Server : de/serialise layout
 - [ ] DB : Layout tárolása adatbázisban
 - [ ] Weblap & server & DB : layout szerkesztése webes felületen
 - [ ] Test : Layout test

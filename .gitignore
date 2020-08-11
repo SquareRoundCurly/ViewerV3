@@ -9,3 +9,5 @@
 # Package lock
 /Source/ViewerV3/package-lock.json
 /Source/ViewerV3/database/test.db
+/.vs/repos/v16
+/.vs

@@ -25,9 +25,9 @@ body {
 .grid-item {
     /*float: left;*/
     display: block;
-    width: 100px;
+    width: calc(100% / 4);
     height: 100px;
-    background: #C09;
+    background: #858585;
     border: 2px solid hsla(0, 0%, 0%, 0.5);
 }
 
@@ -39,11 +39,11 @@ body {
     }
 
 .grid-item--width2 {
-    width: 200px;
+    width: calc(200% / 4);
 }
 
 .grid-item--width3 {
-    width: 300px;
+    width: calc(300% / 4);
 }
 
 .grid-item--height2 {
@@ -70,4 +70,21 @@ body {
     outline-offset: -6px;
     -webkit-transition: -webkit-transform 0.2s;
     transition: transform 0.2s;
+}
+
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 200px;
+        max-width: 800px;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
 }

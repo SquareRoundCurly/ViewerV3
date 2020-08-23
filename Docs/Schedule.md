@@ -27,13 +27,11 @@
 - [ ] Döntés : Dokumentáció generáló eszköz kiválasztása
 - [ ] Demo : Demo modul és kernel építése
 - [ ] Init : Teszt framework kiválasztása, teszt környezet kifejlesztése
-- [ ] Docs : Build & Use instrukciók leírása, dokumentálás
-- [ ] Test : Teszt írása a képbeolvasó modul - hoz
-- [ ] Test : Weblap teszt
+- [x] Docs : Build & Use instrukciók leírása, dokumentálás
 - [ ] Weblap : cloudflare fallback system https://www.hanselman.com/blog/CDNsFailButYourScriptsDontHaveToFallbackFromCDNToLocalJQuery.aspx
 - [x] Weblap : draggable layout
 - [x] Weblap : n size elements
-- [ ] Weblap : draggable layout fotokkal
+- [x] Weblap : draggable layout fotokkal
 - [ ] Server : de/serialise layout
 - [ ] DB : Layout tárolása adatbázisban
 - [ ] Weblap & server & DB : layout szerkesztése webes felületen

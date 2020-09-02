@@ -19,6 +19,12 @@
                 <div id="measurementTypeRadioBtns" align="left">
                 </div>
 
+                <div id="SampleIDRadioBtns" align="left">
+                </div>
+
+                <div id="TypeIDRadioBtns" align="left">
+                </div>
+
                 <div class="list-group list-group-flush">
                     <a href="#" class="list-group-item list-group-item-action bg-light" id="C413">C413</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light" id="L602">L602</a>
@@ -71,7 +77,10 @@
             });
         </script>
 
-        <script>
+        <script type='text/javascript'>
+            var searchData = { name: "", year: -1, projectID: -1, measurementType: "", sampleID: "" };
+            var sampleData = [];
+
             $(document).ready(function () {
                 var socket = io();
 
@@ -80,9 +89,18 @@
 
                     // Set project name
                     document.getElementById('projectName').value = msg.name;
+                    
+                    // Set searchData
+                    searchData.name = msg.name;
+                    searchData.year = msg.year;
+                    searchData.projectID = msg.projectID;
+                    searchData.measurementType = "";
+                    searchData.sampleID = "";
 
                     // Clear any previous radio buttons
                     document.getElementById('measurementTypeRadioBtns').innerHTML = '';
+                    document.getElementById('SampleIDRadioBtns').innerHTML = '';
+                    var sampleRadioBtn = document.createElement('input');
 
                     // Generate radio buttons for measurement types
                     var mTypes = msg.measurementTypes.split(' ');
@@ -97,6 +115,7 @@
                         mTypeRadioBtn.setAttribute('type', 'radio');
                         mTypeRadioBtn.setAttribute('name', 'measurementType');
                         mTypeRadioBtn.setAttribute('id', mTypeElement);
+                        mTypeRadioBtn.setAttribute('onclick', "handleMeasurementTypeChangedEvent(this);");
 
                         // Set label attributes
                         mTypeLabel.innerHTML= mTypeElement;
@@ -106,7 +125,124 @@
                         document.getElementById('measurementTypeRadioBtns').appendChild(mTypeLabel);
                     });
                 });
+
+                socket.on("ProjectMeasurementTypeSearchResult", (msg) => {
+                    console.log(msg);
+
+                    // Set sampleData
+                    sampleData = msg;
+
+                    // Clear any previous radio buttons
+                    document.getElementById('SampleIDRadioBtns').innerHTML = '';
+                    document.getElementById('TypeIDRadioBtns').innerHTML = '';
+
+                    // Generate radio buttons for measurement types
+                    msg.forEach(layoutResult => {
+                        console.log(layoutResult);
+
+                        // Create label and radioBtn
+                        var sampleLabel = document.createElement('label');
+                        var sampleRadioBtn = document.createElement('input');
+                            
+                        // Set radio button attributes
+                        sampleRadioBtn.setAttribute('type', 'radio');
+                        sampleRadioBtn.setAttribute('name', 'sampleID');
+                        sampleRadioBtn.setAttribute('id', layoutResult.sampleID);
+                        sampleRadioBtn.setAttribute('onclick', "handleSampleIDChangedEvent(this);");
+
+                        // Set label attributes
+                        sampleLabel.innerHTML= layoutResult.sampleID;
+                        sampleLabel.setAttribute('for', layoutResult.sampleID);
+
+                        document.getElementById('SampleIDRadioBtns').appendChild(sampleRadioBtn);
+                        document.getElementById('SampleIDRadioBtns').appendChild(sampleLabel);
+                    });
+                });
+
+                socket.on("RequestedLayoutHTML", (msg) =>{
+                    var html = msg;
+
+                    // Set layout grid
+                    document.getElementById('grid').innerHTML = html;
+                    
+                    var grid = document.querySelector('.grid')
+                    var pckry = Packery.data(grid);
+
+                    pckry.shiftLayout();
+                    pckry.reloadItems();
+                    pckry.shiftLayout();
+
+                    var elems = pckry.getItemElements()
+                    elems.forEach((element) => {
+                        var draggie = new Draggabilly(element);
+                        // bind drag events to Packery
+                        pckry.bindDraggabillyEvents(draggie);
+                    });
+
+                    pckry.shiftLayout();
+                    pckry.reloadItems();
+                    pckry.shiftLayout();
+                });
             });
+
+            function handleMeasurementTypeChangedEvent(radioBtn) {
+                console.log(radioBtn.id);
+
+                // Set searchData
+                searchData.measurementType = radioBtn.id;
+
+                var socket = io();
+                socket.emit("ProjectMeasurementTypeSearch", searchData);
+            }
+
+            function handleSampleIDChangedEvent(radioBtn) {
+                console.log(radioBtn.id);
+                console.log(sampleData);
+
+                // Set searchData
+                searchData.sampleID = radioBtn.id;
+
+                // Clear any previous radio buttons
+                document.getElementById('TypeIDRadioBtns').innerHTML = '';
+
+                // Generate radio buttons for measurement types
+                sampleData.forEach(layoutResult => {
+                    if (layoutResult.sampleID == searchData.sampleID) {
+                    
+                        var typeIDs = layoutResult.typeID.split(' ');
+
+                        typeIDs.forEach(typeID => {
+                            // Create label and radioBtn
+                            var typeLabel = document.createElement('label');
+                            var typeRadioBtn = document.createElement('input');
+                            
+                            // Set radio button attributes
+                            typeRadioBtn.setAttribute('type', 'radio');
+                            typeRadioBtn.setAttribute('name', 'typeID');
+                            typeRadioBtn.setAttribute('id', typeID);
+                            typeRadioBtn.setAttribute('onclick', "handleTypeIDChangedEvent(this);");
+
+                            // Set label attributes
+                            typeLabel.innerHTML= typeID;
+                            typeLabel.setAttribute('for', typeID);
+
+                            document.getElementById('TypeIDRadioBtns').appendChild(typeRadioBtn);
+                            document.getElementById('TypeIDRadioBtns').appendChild(typeLabel);
+                        });
+                    }
+                });
+            }
+
+            function handleTypeIDChangedEvent(radioBtn) {
+                console.log(radioBtn.id);
+
+                // Clear layout
+                document.getElementById('grid').innerHTML = '';
+
+                var socket = io();
+                socket.emit("RequestLayoutHTML", {year: searchData.year, projectID: searchData.projectID, measurementType: searchData.measurementType, sampleID: searchData.sampleID, typeID: radioBtn.id });
+            }
+
         </script>
         
         <script>

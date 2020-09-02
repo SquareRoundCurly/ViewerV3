@@ -64,6 +64,104 @@ db.run(projectCommand2, function (err) { if (err !== null) console.log(err); });
 db.run(projectCommand3, function (err) { if (err !== null) console.log(err); });
 db.run(projectCommand4, function (err) { if (err !== null) console.log(err); });
 
+// Create layout table
+db.run
+(`CREATE TABLE IF NOT EXISTS layouts
+    (
+        id INTEGER PRIMARY KEY,
+        year INT NOT NULL,
+        projectID INT NOT NULL,
+        measurementType TEXT NOT NULL,
+        productID TEXT,
+        sampleID TEXT,
+        typeIDs TEXT
+    );
+`);
+
+// Mock layout data
+var layout1 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeIDs) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU1 ECU2 PM1 PM2 PM3 PM4');";
+var layout2 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeIDs) VALUES ('2019', '7', 'x-sec', 'A2X', 'A2X', '');";
+var layout3 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeIDs) VALUES ('2019', '7', 'x-sec', 'F1X', 'F1X', '');";
+var layout4 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeIDs) VALUES ('2019', '7', 'x-sec', 'F2X', 'F2X', '');";
+//var layout5 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeID) VALUES ('2019', '12', 'xray', '', '', '');";
+//var layout6 = "INSERT INTO layouts (year,projectID, measurementType, productID, sampleID, typeID) VALUES ('2019', '12', 'x-sec', '', '', '');";
+
+//db.run(layout1, function (err) { if (err !== null) console.log(err); });
+//db.run(layout2, function (err) { if (err !== null) console.log(err); });
+//db.run(layout3, function (err) { if (err !== null) console.log(err); });
+//db.run(layout4, function (err) { if (err !== null) console.log(err); });
+
+//db.run(layout5, function (err) { if (err !== null) console.log(err); });
+//db.run(layout6, function (err) { if (err !== null) console.log(err); });
+
+// Create layoutHTML table
+db.run
+(`CREATE TABLE IF NOT EXISTS layoutHTML
+    (
+	    id INTEGER PRIMARY KEY,
+        year INT NOT NULL,
+        projectID INT NOT NULL,
+        measurementType TEXT NOT NULL,
+        productID TEXT,
+        sampleID TEXT,
+        typeID TEXT,
+        html TEXT
+    );`
+);
+
+
+// Mock layoutHTML data
+var html1 = `
+<div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" /></div>
+    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_03.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_04.jpg" /></div>
+    <div class="grid-item grid-item--width2 grid-item--height2"><img src="Images/S115_C413_05.jpg" /></div>
+    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_06.jpg" /></div>
+    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_07.jpg" /></div>
+    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_08.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_08m.jpg" /></div>
+    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_09.jpg" /></div>
+    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_10.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
+    <div class="grid-item grid-item--width2 grid-item--height2"><img src="Images/S115_C413_13.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_14.jpg" /></div>
+    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_15.jpg" /></div>
+    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_16.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_01.jpg" /></div>
+</div>
+`;
+var layoutHTML1 = "INSERT INTO layoutHTML (year,projectID, measurementType, productID, sampleID, typeID, html) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU1', '" + html1 +"');";
+
+//db.run(layoutHTML1, function (err) { if (err !== null) console.log(err); });
+
+var html2 = `
+<div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_02.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_13.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_07.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_06.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_07.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_08.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_08m.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_09.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_10.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_13.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_14.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_15.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_16.jpg" /></div>
+    <div class="grid-item"><img src="Images/S115_C413_01.jpg" /></div>
+</div>
+`;
+
+var layoutHTML2 = "INSERT INTO layoutHTML (year,projectID, measurementType, productID, sampleID, typeID, html) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU2', '" + html1 + "');";
+
+db.run(layoutHTML2, function (err) { if (err !== null) console.log(err); });
+
 // Create image table
 db.run
 (`CREATE TABLE IF NOT EXISTS images
@@ -194,7 +292,15 @@ io.on('connection', (socket) =>
 
     socket.on('ProjectSearchBtn', function (data) {
         SearchProject(data.year, data.project);
-    });    
+    });
+
+    socket.on('ProjectMeasurementTypeSearch', function (data) {
+        SearchProjectMeasurementType(data.year, data.projectID, data.measurementType);
+    });
+
+    socket.on('RequestLayoutHTML', function (data) {
+        HandleRequestLayoutHTML(data.year, data.projectID, data.measurementType, data.sampleID, data.typeID);
+    });
 
     socket.on('disconnect', () =>
     {
@@ -278,6 +384,74 @@ function SearchProject(year, projectID) {
         }
 
         io.sockets.emit("projectSearchResult", projectResult);
+    });
+}
+
+function SearchProjectMeasurementType(year, projectID, measurementType) {
+    console.log('Searching for project : ' + projectID + ' in year : ' + year + ' with measurement type : ' + measurementType);
+
+    // Construct command
+    console.log("Constructed query");
+    var command = "SELECT year, projectID, measurementType, productID, sampleID, typeIDs FROM layouts WHERE year = " + year + " AND projectID = " + projectID + " AND measurementType = '" + measurementType + "';";
+    console.log(command);
+
+    // Get results from SELECT
+    var layoutResults = [];
+    db.all(command, [], (err, rows) => {
+
+        if (err !== null) {
+            console.log(err);
+        }
+
+        var success = false;
+        console.log("Found " + rows.length + " results");
+        if (rows.length >= 1) {
+            console.log("Found matching layout(s)");
+            success = true;
+        }
+        else {
+            console.log("No such layout matching year and projectID and measurementType");
+        }
+
+        if (success) {
+            rows.forEach((row) => {
+                var layoutResult = { sampleID: "", typeIDs: "" };
+                layoutResult.sampleID = row.sampleID;
+                layoutResult.typeID = row.typeIDs;
+                layoutResults.push(layoutResult);
+            });
+        }
+
+        io.sockets.emit("ProjectMeasurementTypeSearchResult", layoutResults);
+    });
+}
+
+function HandleRequestLayoutHTML(year, projectID, measurementType, sampleID, typeID) {
+    // Construct command
+    console.log("Constructed query");
+    var command = "SELECT html FROM layoutHTML WHERE year = " + year + " AND projectID = " + projectID + " AND measurementType = '" + measurementType + "' AND sampleID = '" + sampleID + "' AND typeID = '" + typeID + "';";
+    console.log(command);
+
+    // Get results from SELECT
+    db.all(command, [], (err, rows) => {
+
+        if (err !== null) {
+            console.log(err);
+        }
+
+        var success = false;
+        console.log("Found " + rows.length + " results");
+        if (rows.length == 1) {
+            console.log("Found matching HTML");
+            success = true;
+        }
+        else {
+            console.log("No such HTML matching year and projectID and measurementType and sampleID and typeID");
+        }
+
+        if (success) {
+            io.sockets.emit("RequestedLayoutHTML", rows[0].html);
+        }
     });
 }
 

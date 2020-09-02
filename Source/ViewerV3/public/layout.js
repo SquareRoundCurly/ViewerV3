@@ -3,8 +3,8 @@ window.addEventListener('load', function () {
         itemSelector: '.grid-item',
         percentPosition: true,
         gutter: 0,
-        rowHeight: 100
-        //columnWidth: 100
+        rowHeight: 100,
+        columnWidth: 100
     });
 
     // make all grid-items draggable

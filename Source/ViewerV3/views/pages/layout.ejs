@@ -9,30 +9,16 @@
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="form-group">
                     <label for="year">Year:</label>
-                    <input type="text" class="form-control" id="year">
+                    <input type="number" class="form-control" id="year" value="2019">
                     <label for="project">Project:</label>
-                    <input type="text" class="form-control" id="project">
+                    <input type="number" class="form-control" id="project">
+                    <button type="submit" class="btn btn-primary mb-2" id="ProjectSearchBtn">Search</button>
+                    <input type="text" class="form-control" id="projectName" disabled>
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">Option 1
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">Option 2
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="" disabled>Option 3
-                            </label>
-                        </div>
-                    </div>
+                
+                <div id="measurementTypeRadioBtns" align="left">
                 </div>
+
                 <div class="list-group list-group-flush">
                     <a href="#" class="list-group-item list-group-item-action bg-light" id="C413">C413</a>
                     <a href="#" class="list-group-item list-group-item-action bg-light" id="L602">L602</a>
@@ -48,7 +34,6 @@
             <div id="page-content-wrapper">
 
               <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
                 <div class="grid" id="grid">
                     <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" /></div>
                     <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
@@ -78,7 +63,52 @@
 
         <script src="layout.js"></script>
 
-        <!-- Menu Toggle Script -->
+        <script>
+            $(document).on("click", "#ProjectSearchBtn", function (event) {
+                var socket = io();
+
+                socket.emit("ProjectSearchBtn", { year: document.getElementById("year").value, project: document.getElementById("project").value });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                var socket = io();
+
+                socket.on("projectSearchResult", (msg) => {
+                    console.log(msg);
+
+                    // Set project name
+                    document.getElementById('projectName').value = msg.name;
+
+                    // Clear any previous radio buttons
+                    document.getElementById('measurementTypeRadioBtns').innerHTML = '';
+
+                    // Generate radio buttons for measurement types
+                    var mTypes = msg.measurementTypes.split(' ');
+                    mTypes.forEach(mTypeElement => {
+                        console.log(mTypeElement);
+
+                        // Create label and radioBtn
+                        var mTypeLabel = document.createElement('label');
+                        var mTypeRadioBtn = document.createElement('input');
+                            
+                        // Set radio button attributes
+                        mTypeRadioBtn.setAttribute('type', 'radio');
+                        mTypeRadioBtn.setAttribute('name', 'measurementType');
+                        mTypeRadioBtn.setAttribute('id', mTypeElement);
+
+                        // Set label attributes
+                        mTypeLabel.innerHTML= mTypeElement;
+                        mTypeLabel.setAttribute('for', mTypeElement);
+
+                        document.getElementById('measurementTypeRadioBtns').appendChild(mTypeRadioBtn);
+                        document.getElementById('measurementTypeRadioBtns').appendChild(mTypeLabel);
+                    });
+                });
+            });
+        </script>
+        
         <script>
             window.onload = function() {
                 document.getElementById('C413').onclick = function()

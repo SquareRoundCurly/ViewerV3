@@ -112,55 +112,53 @@ db.run
 
 // Mock layoutHTML data
 var html1 = `
-<div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" /></div>
-    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_03.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_04.jpg" /></div>
-    <div class="grid-item grid-item--width2 grid-item--height2"><img src="Images/S115_C413_05.jpg" /></div>
-    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_06.jpg" /></div>
-    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_07.jpg" /></div>
-    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_08.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_08m.jpg" /></div>
-    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_09.jpg" /></div>
-    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_10.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
-    <div class="grid-item grid-item--width2 grid-item--height2"><img src="Images/S115_C413_13.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_14.jpg" /></div>
-    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_15.jpg" /></div>
-    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_16.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_01.jpg" /></div>
-</div>
+        <div class="grid-item grid-item--width2" style="position: absolute; left: 0%; top: 0px; touch-action: none;"><img src="Images/S115_C413_01.jpg"></div>
+        <div class="grid-item grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 200px;"><img src="Images/S115_C413_02.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 200px;"><img src="Images/S115_C413_03.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 400px;"><img src="Images/S115_C413_04.jpg"></div>
+        <div class="grid-item grid-item--width2 grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 600px;"><img src="Images/S115_C413_05.jpg"></div>
+        <div class="grid-item grid-item--width2" style="position: absolute; touch-action: none; left: 0%; top: 1200px;"><img src="Images/S115_C413_06.jpg"></div>
+        <div class="grid-item grid-item--width2" style="position: absolute; touch-action: none; left: 0%; top: 1000px;"><img src="Images/S115_C413_07.jpg"></div>
+        <div class="grid-item grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 1600px;"><img src="Images/S115_C413_08.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 1600px;"><img src="Images/S115_C413_08m.jpg"></div>
+        <div class="grid-item grid-item--width2" style="position: absolute; touch-action: none; left: 0%; top: 1400px;"><img src="Images/S115_C413_09.jpg"></div>
+        <div class="grid-item grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 2000px;"><img src="Images/S115_C413_10.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 2400px;"><img src="Images/S115_C413_11.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 2600px;"><img src="Images/S115_C413_12.jpg"></div>
+        <div class="grid-item grid-item--width2 grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 2800px;"><img src="Images/S115_C413_13.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 3200px;"><img src="Images/S115_C413_14.jpg"></div>
+        <div class="grid-item grid-item--width2" style="position: absolute; touch-action: none; left: 0%; top: 3400px;"><img src="Images/S115_C413_15.jpg"></div>
+        <div class="grid-item grid-item--height2" style="position: absolute; touch-action: none; left: 0%; top: 3600px;"><img src="Images/S115_C413_16.jpg"></div>
+        <div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 4000px;"><img src="Images/S115_C413_01.jpg"></div>
 `;
 var layoutHTML1 = "INSERT INTO layoutHTML (year,projectID, measurementType, productID, sampleID, typeID, html) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU1', '" + html1 +"');";
 
 //db.run(layoutHTML1, function (err) { if (err !== null) console.log(err); });
 
 var html2 = `
-<div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_02.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_13.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_07.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_06.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_07.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_08.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_08m.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_09.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_10.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_11.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_12.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_13.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_14.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_15.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_16.jpg" /></div>
-    <div class="grid-item"><img src="Images/S115_C413_01.jpg" /></div>
-</div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 0px;"><img src="Images/S115_C413_12.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 200px;"><img src="Images/S115_C413_02.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 200px;"><img src="Images/S115_C413_13.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 400px;"><img src="Images/S115_C413_07.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 400px;"><img src="Images/S115_C413_11.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 600px;"><img src="Images/S115_C413_06.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 600px;"><img src="Images/S115_C413_07.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 800px;"><img src="Images/S115_C413_08.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 800px;"><img src="Images/S115_C413_08m.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 1000px;"><img src="Images/S115_C413_09.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 1000px;"><img src="Images/S115_C413_10.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 1200px;"><img src="Images/S115_C413_11.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 1200px;"><img src="Images/S115_C413_12.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 1400px;"><img src="Images/S115_C413_13.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 1400px;"><img src="Images/S115_C413_14.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 50%; top: 1600px;"><img src="Images/S115_C413_15.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 1600px;"><img src="Images/S115_C413_16.jpg"></div>
+<div class="grid-item" style="position: absolute; touch-action: none; left: 0%; top: 0px;"><img src="Images/S115_C413_01.jpg"></div>
 `;
 
-var layoutHTML2 = "INSERT INTO layoutHTML (year,projectID, measurementType, productID, sampleID, typeID, html) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU2', '" + html1 + "');";
+var layoutHTML2 = "INSERT INTO layoutHTML (year,projectID, measurementType, productID, sampleID, typeID, html) VALUES ('2019', '7', 'x-sec', 'A1X', 'A1X', 'ECU2', '" + html2 + "');";
 
-db.run(layoutHTML2, function (err) { if (err !== null) console.log(err); });
+//db.run(layoutHTML2, function (err) { if (err !== null) console.log(err); });
 
 // Create image table
 db.run

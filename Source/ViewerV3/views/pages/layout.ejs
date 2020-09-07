@@ -168,9 +168,7 @@
                     var grid = document.querySelector('.grid')
                     var pckry = Packery.data(grid);
 
-                    pckry.shiftLayout();
                     pckry.reloadItems();
-                    pckry.shiftLayout();
 
                     var elems = pckry.getItemElements()
                     elems.forEach((element) => {
@@ -179,9 +177,8 @@
                         pckry.bindDraggabillyEvents(draggie);
                     });
 
-                    pckry.shiftLayout();
+                    //pckry.shiftLayout();
                     pckry.reloadItems();
-                    pckry.shiftLayout();
                 });
             });
 

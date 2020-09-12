@@ -39,9 +39,9 @@
             <!-- Page Content -->
             <div id="page-content-wrapper">
 
-              <div class="container-fluid">
+              <div class="container-fluid" id='container'>
                 <div class="grid" id="grid">
-                    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" /></div>
+                    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" id='target' /></div>
                     <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
                     <div class="grid-item"><img src="Images/S115_C413_03.jpg" /></div>
                     <div class="grid-item"><img src="Images/S115_C413_04.jpg" /></div>
@@ -251,6 +251,34 @@
                     //document.getElementById('grid').innerHTML += '<div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" /></div>';
                 };
             };
+        </script>
+
+        <script src="/tui/tui-context-menu.js"></script>
+
+        <script>
+            var contextMenu = new tui.ContextMenu(document.querySelector('#container'));
+
+            function onClick(e, cmd) {
+                console.log(cmd);
+                console.log(e);
+            }
+
+            contextMenu.register('#target', onClick, [
+                {title: 'New Folder'},
+                {
+                    title: 'New File',
+                    menu: [
+                        {title: '20170101.xls'},
+                        {title: 'image.png', command: 'export-to-png'},
+                        {title: 'image.jpg', command: 'export-to-jpg'}
+                    ]
+                },
+                {separator: true},
+                {title: 'Rename'},
+                {title: 'Delete'},
+                {title: 'Copy', disable: true},
+                {title: 'Paste', disable: true}
+            ]);
         </script>
 
         <%- include('../template/footer')-%>

@@ -27,6 +27,8 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));  
 // Packery
 app.use('/packery', express.static(__dirname + '/node_modules/packery/dist/'));
 
+app.use('/tui', express.static(__dirname + '/node_modules/tui-context-menu/dist/'))
+
 // Get static resource dir 'public'
 var dir = path.join(__dirname, 'public');
 
@@ -467,3 +469,32 @@ server.listen(port, function ()
 //    }
 //    console.log('Close the database connection.');
 //});
+
+RegisterProjectDirs();
+
+function RegisterProjectDirs() {
+    var directoryPath = 'M:\\balazs.szoke\\2019';
+
+    console.log('Indexing project directories');
+
+    fs.readdir(directoryPath, function (err, projectDirs) {
+        //handling error
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        }
+        //listing all files using forEach
+        projectDirs.forEach(function (projectDir) {
+            // Do whatever you want to do with the file
+            console.log(projectDir);
+
+            fs.readdir(path.join(directoryPath, projectDir), function (err, measurementTypeDirs) {
+                //handling error
+                if (err) {
+                    return console.log('Unable to scan directory: ' + err);
+                }
+
+                console.log('\t' + measurementTypeDirs);
+            });
+        });
+    });
+}

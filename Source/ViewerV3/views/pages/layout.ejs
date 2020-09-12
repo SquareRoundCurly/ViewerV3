@@ -260,11 +260,25 @@
 
             function onClick(e, cmd) {
                 console.log(cmd);
-                console.log(e);
+                if (cmd == 'Toggle faulty')
+                {
+                    var target = document.getElementById('target');
+                    var targetGridItem = target.parentElement;
+                    let targetColor = window.getComputedStyle(targetGridItem).backgroundColor;
+
+                    console.log(targetColor);
+
+                    if (targetColor == 'rgb(133, 133, 133)') {
+                        targetGridItem.style.background = '#fc0303';
+                    }
+                    else {
+                        targetGridItem.style.background = '#858585';
+                    }
+                }
             }
 
             contextMenu.register('#target', onClick, [
-                {title: 'New Folder'},
+                {title: 'Toggle faulty'},
                 {
                     title: 'New File',
                     menu: [

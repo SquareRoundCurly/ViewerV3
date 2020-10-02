@@ -11,6 +11,8 @@ body {
     font-family: sans-serif;
 }
 
+
+
 /* ---- grid ---- */
 
 .grid {
@@ -85,11 +87,20 @@ body {
 
     #page-content-wrapper {
         min-width: 200px;
-        max-width: 800px;
+        max-width: 1600px;
         width: 100%;
+        display: flex;
     }
 
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -15rem;
+    }
+
+    #container {
+        flex: 0 0 50%;
+    }
+
+    #container2 {
+        flex: 1;
     }
 }

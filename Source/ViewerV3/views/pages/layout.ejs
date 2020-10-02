@@ -41,10 +41,10 @@
 
               <div class="container-fluid" id='container'>
                 <div class="grid" id="grid">
-                    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" id='target' /></div>
-                    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
-                    <div class="grid-item"><img src="Images/S115_C413_03.jpg" /></div>
-                    <div class="grid-item"><img src="Images/S115_C413_04.jpg" /></div>
+                    <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" id='target0' /></div>
+                    <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" id='target1'  /></div>
+                    <div class="grid-item"><img src="Images/S115_C413_03.jpg" id='target2' /></div>
+                    <div class="grid-item"><img src="Images/S115_C413_04.jpg" id='target3' /></div>
                     <div class="grid-item grid-item--width2 grid-item--height2"><img src="Images/S115_C413_05.jpg" /></div>
                     <div class="grid-item grid-item--width2"><img src="Images/S115_C413_06.jpg" /></div>
                     <div class="grid-item grid-item--width2"><img src="Images/S115_C413_07.jpg" /></div>
@@ -63,7 +63,7 @@
               </div>
 
               <div class="container-fluid" id='container2'>
-                <div class="grid" id="grid">
+                <div class="grid" id="grid2">
                     <div class="grid-item grid-item--width2"><img src="Images/S115_C413_01.jpg" id='target' /></div>
                     <div class="grid-item grid-item--height2"><img src="Images/S115_C413_02.jpg" /></div>
                     <div class="grid-item"><img src="Images/S115_C413_03.jpg" /></div>
@@ -283,9 +283,11 @@
 
             function onClick(e, cmd) {
                 console.log(cmd);
-                if (cmd == 'Toggle faulty')
-                {
-                    var target = document.getElementById('target');
+                console.log(e.command);
+                //if (cmd == 'Toggle faulty')
+                //{
+                    var target = document.getElementById('target' + cmd);
+
                     var targetGridItem = target.parentElement;
                     let targetColor = window.getComputedStyle(targetGridItem).backgroundColor;
 
@@ -297,11 +299,14 @@
                     else {
                         targetGridItem.style.background = '#858585';
                     }
-                }
+                //}
             }
 
-            contextMenu.register('#target', onClick, [
-                {title: 'Toggle faulty'},
+            container = document.getElementById("container");
+            container.childNodes.forEach(function(item, index) {
+
+                contextMenu.register('#target' + index, onClick, [
+                {title: 'Toggle faulty', command: index},
                 {
                     title: 'New File',
                     menu: [
@@ -315,7 +320,10 @@
                 {title: 'Delete'},
                 {title: 'Copy', disable: true},
                 {title: 'Paste', disable: true}
-            ]);
+                ]);
+            });
+
+            
         </script>
 
         <%- include('../template/footer')-%>
